@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>React LMS</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="description" content="Default Description">
+    <meta name="keywords" content="fashion, store, E-commerce">
+    <meta name="robots" content="*">
+    <base href="/" />
+    
+      <link rel="icon" href="/images/logo.png" type="image/png" sizes="16x16">  
+      <link for="Home" href="css/bootstrap.css" rel="stylesheet">
+      <link for="Home" href="css/main.css" rel="stylesheet">
+      <link for="Home" href="css/responsive.css" rel="stylesheet">
+      <link for="Home" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Titillium+Web:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+      
+    <!--    FOR ADMIN  -->
+    <!-- Bootstrap 3.3.7 -->
+      <link for="Admin" rel="stylesheet" href="/admin/bower_components/bootstrap/dist/css/bootstrap.min.css">
+       <!-- <link for="Admin" rel="stylesheet" href="css/bootstrap.css"> -->
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="/admin/bower_components/font-awesome/css/font-awesome.min.css">
+      <link  for="Admin" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/css/all.css" rel="stylesheet">
+      <!-- Bootstrap Select -->
+      <link for="Admin" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" />
+      <link for="Admin" rel="stylesheet" href="css/style.css"/>
+      <!-- Ionicons -->
+      <link  for="Admin" rel="stylesheet" href="/admin/bower_components/Ionicons/css/ionicons.min.css">
+      <!--Data Tables-->
+      <link  for="Admin" rel="stylesheet" href="/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
+      <!-- bootstrap datepicker -->
+      <link  for="Admin" rel="stylesheet" href="/admin/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+      <!-- jvectormap -->
+      <link  for="Admin" rel="stylesheet" href="/admin/bower_components/jvectormap/jquery-jvectormap.css">
+      <!-- Theme style -->
+      <link  for="Admin" rel="stylesheet" href="/admin/dist/css/AdminLTE.min.css">
+      <link  for="Admin" rel="stylesheet" href="/admin/dist/css/style.css">
+      <link  for="Admin" rel="stylesheet" href="/admin/dist/css/main.css">
+      <!-- AdminLTE Skins. Choose a skin from the css/skins
+           folder instead of downloading all of them to reduce the load. -->
+      <link  for="Admin" rel="stylesheet" href="/admin/dist/css/skins/_all-skins.min.css">
+    <link  for="Admin" rel="stylesheet" href="/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+      <!-- Google Font -->
+      <link for="Admin" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!--   CSS for croppie plugin -->
+       <link  for="Admin" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
+
+       <!-- Font Awesome IconPicker -->
+      <link  for="Admin" href="/admin/dist/css/fontawesome-iconpicker.min.css" rel="stylesheet">
+
+       <!--Disables Arrow Keys of Type Number-->
+        <style>
+            input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            } 
+            input[type="number"] {
+                -moz-appearance: textfield;
+            }
+
+            .switch {
+              position: relative;
+              display: inline-block;
+              width: 60px;
+              height: 34px;
+              margin-top:10px;
+              margin-right:20px;
+            }
+
+            .switch input { 
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+
+            .slider {
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: black;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+
+            .slider:before {
+              position: absolute;
+              content: "";
+              height: 26px;
+              width: 26px;
+              left: 4px;
+              bottom: 4px;
+              background-color: white;
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+
+            input:checked + .slider {
+              background-color: #2fc911;
+            }
+
+            input:focus + .slider {
+              box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+              -webkit-transform: translateX(26px);
+              -ms-transform: translateX(26px);
+              transform: translateX(26px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+              border-radius: 34px;
+            }
+
+            .slider.round:before {
+              border-radius: 50%;
+            }
+
+            #loader-wrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 100000;
+                background-color:rgba(255,255,255,0.7);
+            }
+            #loader {
+                display: block;
+                position: relative;
+                left: 50%;
+                top: 45%;
+                margin: -75px 0 0 -75px;
+                 z-index: 1500;
+            }
+       .size:hover {
+              opacity: 0.3;  
+            }
+
+            #save
+            {
+                width: 117px;
+                border-radius: 15.5px;
+                background-color: #fef2df;
+                text-align: center;
+                padding-top: 6px;
+                padding-bottom: 6px;
+                color: #f19b0e;
+                margin: 0 auto
+            }
+
+    </style>
+        <style>
+            .m_icon{
+                display:none;
+            }
+
+            @media only screen and (max-width: 600px) {
+                .info-box-icon{
+                    display:none;    
+                }
+
+                .info-box-content{
+                    margin-left:10px;
+                    padding:5px;
+                }
+
+                .info-box{
+                    min-height:10px;
+                    background: linear-gradient(to right, #fa897d 0%, #fe5f88 100%);
+                }
+
+                .info-box-text, .info-box-number{
+                    font-size:12px;
+                    color:white;
+                }
+
+                .m_icon{
+                    display:inline;
+                }
+
+                .content-header {
+                    font-size:18px;
+                    padding:0px 15px 0px 15px;
+                }
+
+                .content-header > h1{
+                    margin-top:10px;
+                    font-size:20;
+                }
+
+                table{
+                    font-size:12px;
+                }
+            }
+            @media only screen and (min-width: 750px){
+                #share{
+                    display: none;
+                }
+            }
+        </style>
+
+    <script for="Home" src="js/jquery.js"></script>
+      
+<!--      FOR ADMIN-->
+      <!-- jQuery 3 -->
+    <script  for="Admin" src="/admin/bower_components/jquery/dist/jquery.js"></script>
+    <script  for="Admin" src="/admin/dist/js/jquery.form.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script  for="Admin" src="/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script  for="Admin" src="/admin/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script  for="Admin" src="/admin/dist/js/adminlte.min.js"></script>
+    <!-- Sparkline -->
+    <script  for="Admin" src="/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script  for="Admin" src="/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script  for="Admin" src="/admin/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+    <!-- bootstrap datepicker -->
+    <script  for="Admin" src="/admin/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <!-- jvectormap  -->
+    <script  for="Admin" src="/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script  for="Admin" src="/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <!-- SlimScroll -->
+    <script  for="Admin" src="/admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+     <script  for="Admin" src="/admin/bower_components/ckeditor/ckeditor.js"></script>
+    <script  for="Admin" src="/admin/dist/js/demo.js"></script>
+
+    <!-- fontawesome-iconpicker -->
+    <script  for="Admin" src="/admin/dist/js/fontawesome-iconpicker.min.js"></script>
+<!--    <script  for="Admin" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.1.0/js/all.js"></script>-->
+
+    <!-- Buttons showing all the options like pdf, excel etc -->
+
+    <script for="Admin" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+
+    <!-- HTML5 library for exporting files -->
+    <script for="Admin" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script for="Admin" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+    <!-- To create zip files -->
+    <script  for="Admin" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <!-- PDF maker library -->
+    <script  for="Admin" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script  for="Admin" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+
+    <!--JQUERY VALIDATE PLUGIN-->
+    <script  for="Admin" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+
+        <!-- function for add lazy load -->
+    <script  for="Admin" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+    <!-- Plugin for croping image before uploading-->
+    <script  for="Admin" src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
+
+    <!-- Bootstrap select -->
+    <script  for="Admin" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+    <script  for="Admin">
+    $(document).ready(function() {
+      var lazyloadImages;    
+
+      if ("IntersectionObserver" in window) {
+        lazyloadImages = document.querySelectorAll(".lazy");
+        var imageObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var image = entry.target;
+              image.src = image.dataset.src;
+              image.classList.remove("lazy");
+              imageObserver.unobserve(image);
+            }
+          });
+        });
+
+        lazyloadImages.forEach(function(image) {
+          imageObserver.observe(image);
+        });
+      } else {  
+        var lazyloadThrottleTimeout;
+        lazyloadImages = $(".lazy");
+
+        function lazyload () {
+          if(lazyloadThrottleTimeout) {
+            clearTimeout(lazyloadThrottleTimeout);
+          }    
+
+          lazyloadThrottleTimeout = setTimeout(function() {
+              var scrollTop = $(window).scrollTop();
+              lazyloadImages.each(function() {
+                  var el = $(this);
+                  if(el.offset().top - scrollTop < window.innerHeight) {
+                    var url = el.attr("data-src");
+                    el.attr("src", url);
+                    el.removeClass("lazy");
+                    lazyloadImages = $(".lazy");
+                  }
+              });
+              if(lazyloadImages.length == 0) { 
+                $(document).off("scroll");
+                $(window).off("resize");
+              }
+          }, 20);
+        }
+
+        $(document).on("scroll", lazyload);
+        $(window).on("resize", lazyload);
+      }
+    });
+    </script>
+
+    <script  for="Admin">
+
+      $(function () {
+
+        //add class on the datatable buttons
+        $(".dt-button").addClass("btn btn-danger btn-sm");
+        $(".dt-buttons").css('text-align','center');
+
+        //Toggle the switch if website status is enabled
+        if($("#website_status_value").val()=="Enable")
+        {
+
+           $("#website_status").attr("checked", true);
+        }	
+
+        //Creating Ajax Call on Shop Switch Click
+        $('#website_status'). click(function(){
+            var website_status_value="";
+            if($(this). prop("checked") == true){
+                website_status_value="Enable";
+
+            }
+            else if($(this). prop("checked") == false){
+                website_status_value="Disable";
+            }
+            $.ajax({
+               type:"post",
+               url:"ajax_admin.php",
+               data:{website_status_value:website_status_value},
+               success:function(result)
+               {
+                   if(result=="ok")
+                   {
+                   }
+                   else
+                   {
+                         alert("Some Error Occured!");
+                   }
+               }
+            });
+        });
+
+        // Disable scroll when focused on a number input.
+        $('form').on('focus', 'input[type=number]', function(e) {
+            $(this).on('wheel', function(e) {
+                e.preventDefault();
+            });
+        });
+
+        // Restore scroll on number inputs.
+        $('form').on('blur', 'input[type=number]', function(e) {
+            $(this).off('wheel');
+        });
+
+        // Disable up and down keys.
+        $('form').on('keydown', 'input[type=number]', function(e) {
+            if ( e.which == 38 || e.which == 40 )
+                e.preventDefault();
+        });  
+
+        //Restricting Only Number Inputs
+        $("input[type=number]").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+                 // Allow: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || 
+                 // Allow: home, end, left, right, down, up
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                     // let it happen, don't do anything
+                     return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+
+      });
+
+        //file type validation
+        function deleteImage(str,nameimage){
+          $.post("ajax_admin.php",{
+            image_id:str,
+            nameimage:nameimage,
+            },
+            function(data,status){
+              const res=document.getElementById('message');
+              var tag=document.createElement('div');
+              tag.setAttribute('id','uninque');
+              if (data==='fail') {
+                tag.setAttribute('class','alert alert-danger uninque');
+                var t=document.createTextNode("Error Deleting The Image");
+                tag.appendChild(t);
+                res.appendChild(tag);
+              }
+              if (data==='success') {
+                $('.alert').hide();
+                tag.setAttribute('class','alert alert-success uninque');
+                var t=document.createTextNode("Successfully Deleted the Image");
+                tag.appendChild(t);
+                res.appendChild(tag);
+                document.getElementById("div"+str).remove();
+                //location.reload();
+              }
+              //setTimeout(() => {
+                //document.getElementById("uninque").remove();
+                //
+              //}, 3000);
+            });
+        }
+
+    $(document).on('change', '#image_upload_file', function () {
+    var progressBar = $('.progressBar'), bar = $('.progressBar .bar'), percent = $('.progressBar .percent');
+
+    $('#image_upload_form').ajaxForm({
+        beforeSend: function() {
+            progressBar.fadeIn();
+            var percentVal = '0%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal)
+            percent.html(percentVal);
+        },
+        success: function(html, statusText, xhr, $form) {
+          console.log(html);
+            obj = $.parseJSON(html);	
+            if(obj.status){		
+                var percentVal = '100%';
+                bar.width(percentVal)
+                percent.html(percentVal);
+                $("#imgArea>img").prop('src',obj.image_medium);			
+            }else{
+                alert(obj.error);
+            }
+        },
+        complete: function(xhr) {
+            progressBar.fadeOut();			
+        }	
+    }).submit();		
+
+    });
+
+
+    //Left navigatyion bar search
+
+        $(document).on('click','#search',function(){
+        $('#main_nav_head').html(`  
+        <div class="input-group add-on">
+          <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default btn_close" ><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+      `)
+        $("#srch-term").focus()
+    });
+
+    $(document).on('click','.btn_close',function(){
+        $('#main_nav_head').html(`MAIN NAVIGATION <i class="fa fa-search pull-right" id="search" style="color:#00c0EF"></i>`);
+        $('#main_nav_head').siblings('li').show();
+    });
+
+      $(document).on('keyup','#srch-term',function(){
+          $('#main_nav_head').siblings('li').hide();
+          var value=$(this).val();
+          var i=0
+          $('#main_nav_head').siblings('li').each(function(){
+            if($(this).html().toLowerCase().includes(value.toLowerCase()))
+                {
+                    $(this).show();
+                }
+        });   
+      });
+
+        
+        function adminNav(btn)
+        {
+            if($(btn).find(".treeview-menu").length)
+            {
+                var status=true;
+                if($(btn).attr("class").includes("active"))
+                {
+                    status=false;
+                }
+                $(".treeview").removeClass("active").removeClass("menu-open")
+                if(status)
+                {
+                    $(btn).addClass("active").addClass("menu-open")
+                }
+            }
+            else
+            {
+                $(".treeview").removeClass("active").removeClass("menu-open")
+            }
+        }
+     </script>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
+    
+        <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-arrow-circle-up"></span></div>
+    
+        <script for="Home" src="js/popper.min.js"></script>
+        <script for="Home" src="js/jquery.scrollTo.js"></script>
+        <script for="Home" src="js/bootstrap.min.js"></script>
+        <script for="Home" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script for="Home" src="js/jquery.fancybox.js"></script>
+        <script for="Home" src="js/appear.js"></script>
+        <script for="Home" src="js/swiper.min.js"></script>
+        <script for="Home" src="js/element-in-view.js"></script>
+        <script for="Home" src="js/jquery.paroller.min.js"></script>
+        <script for="Home" src="js/parallax.min.js"></script>
+        <script for="Home" src="js/tilt.jquery.min.js"></script>
+        <script for="Admin" src="https://checkout.razorpay.com/v1/checkout.js"></script>
+         
+
+        <!--Master Slider-->
+        <script for="Home" src="js/jquery.easing.min.js"></script>
+        <script for="Home" src="js/owl.js"></script>
+        <script for="Home" src="js/wow.js"></script>
+        <script for="Home" src="js/jquery-ui.js"></script>
+        <script for="Home" src="js/script.js"></script>
+        <script for="Home">
+            var head = document.getElementsByTagName('head')[0];
+            var jsCDN = document.createElement("script");
+            var js = document.createElement("script");
+            jsCDN.type = "text/javascript";
+            jsCDN.src = "https://cdn.onesignal.com/sdks/OneSignalSDK.js";
+            js.src = "js/owl_and_tawk.js";
+            if(!window.location.href.includes("/admin/"))
+            {
+                /*head.appendChild(jsCDN);
+                head.appendChild(js);*/
+            }
+        </script>
+        <script>
+            var string_to_slug = function (str)
+            {
+                str = str.replace(/^\s+|\s+$/g, ''); // trim
+                str = str.toLowerCase();
+
+                // remove accents, swap ñ for n, etc
+                var from = "àáäâèéëêìíïîòóöôùúüûñçěščřžýúůďťň·/_,:;";
+                var to   = "aaaaeeeeiiiioooouuuuncescrzyuudtn------";
+
+                for (var i=0, l=from.length ; i<l ; i++)
+                {
+                    str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+                }
+
+                str = str.replace('.', '-') // replace a dot by a dash 
+                    .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+                    .replace(/\s+/g, '-') // collapse whitespace and replace by a dash
+                    .replace(/-+/g, '-') // collapse dashes
+                    .replace( /\//g, '' ); // collapse all forward-slashes
+
+                return str;
+            }
+
+            var showSlug = function(id, value)
+            {
+                var slug = string_to_slug(value);
+                $("#"+id).val(slug);
+            }
+        </script>
+  </body>
+</html>

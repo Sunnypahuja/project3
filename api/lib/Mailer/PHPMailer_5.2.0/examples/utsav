@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>PHPMailer - SMTP (Gmail) basic test</title>
+</head>
+<body>
+<?php
+	$acceptable = array(
+            'application/pdf',
+            'image/jpeg',
+            'image/jpg',
+            'image/gif',
+            'image/png'
+        );
+    
+    	$myFile = $_FILES['file'];
+    			 $imagename=$_FILES["file"]["name"];
+    			 $targetpath='C:\xampp\htdocs\Mailer\PHPMailer_5.2.0\examples\images/';
+    		     $name=$_FILES['file']['name'];
+    			 $temp_name=$_FILES['file']['tmp_name'];
+    			move_uploaded_file($temp_name,$targetpath.$name);
+    				
+  		    
+       
+$to=$_POST["to"];
+$subject=$_POST["subject"];
+$message=$_POST["body"];
+require_once('../class.phpmailer.php');
+$mail = new PHPMailer(); // create a new object
+$mail->IsSMTP(); // enable SMTP
+$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+$mail->SMTPAuth = true; // authentication enabled
+$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+$mail->Host = "smtp.gmail.com";
+$mail->Port = 465; // or 587
+$mail->IsHTML(true);
+$mail->Username = "tariyalaman39@gmail.com";
+$mail->Password = "fcupxqbx@5";
+$mail->SetFrom("tariyalaman39@gmail.com");
+$mail->Subject = $subject;
+if(!empty($name))
+$mail->AddAttachment('C:\xampp\htdocs\Mailer\PHPMailer_5.2.0\examples\images/'.$name ,$name);
+$mail->Body = $message;
+$mail->AddAddress($to);
+
+ if(!$mail->Send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+ } else {
+    echo "Message has been sent";
+ }
+?>
+
+</body>
+</html>
